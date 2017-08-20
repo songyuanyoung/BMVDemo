@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.zach.bmvdemo.Data.Model.Location;
@@ -22,10 +23,14 @@ import butterknife.ButterKnife;
 public class LocationFragmentAdapter extends RecyclerView.Adapter<LocationFragmentAdapter.ViewHolder> {
     private Context context;
     private List<Location> list;
-
+    onItemSelectedListener mCallback;
+    public interface onItemSelectedListener{
+        void onItemSelected(int position);
+    }
     public LocationFragmentAdapter(Context context, List<Location> list) {
         this.context = context;
         this.list = list;
+        this.mCallback =  (onItemSelectedListener)context;
     }
 
     @Override
@@ -39,7 +44,7 @@ public class LocationFragmentAdapter extends RecyclerView.Adapter<LocationFragme
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         Location location = list.get(position);
         holder.ID.setText(location.getID() + "");
         holder.Name.setText(location.getName());
@@ -47,6 +52,17 @@ public class LocationFragmentAdapter extends RecyclerView.Adapter<LocationFragme
         holder.Longitude.setText(location.getLongitude() + "");
         holder.Address.setText(location.getAddress());
         holder.ArrivalTime.setText(location.getArrivalTime());
+        holder.Details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mCallback.onItemSelected(position);
+
+            }
+        });
+
+
+
+
 
 
     }
@@ -73,6 +89,8 @@ public class LocationFragmentAdapter extends RecyclerView.Adapter<LocationFragme
         TextView Address;
         @BindView(R.id.ArrivalTime)
         TextView ArrivalTime;
+        @BindView(R.id.details)
+        Button Details;
 
         ViewHolder(View view) {
             super(view);
