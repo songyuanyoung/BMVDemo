@@ -28,21 +28,21 @@
                 android:id="@+id/bbutton_group_checked1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1"
+                android:text="Name"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 android:id="@+id/bbutton_group_checked2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2"
+                android:text="Arrive Time"
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 android:id="@+id/bbutton_group_checked3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="3"
+                android:text="Distance"
                 />
         </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
 
